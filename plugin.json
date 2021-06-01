@@ -1,0 +1,76 @@
+{
+    "name": "Posthog PagerDuty plugin",
+    "url": "https://github.com/PostHog/posthog-pagerduty-plugin",
+    "description": "Create PagerDuty incidents when a posthog query crosses a threshold",
+    "main": "index.js",
+    "config": [
+        {
+            "markdown": "Configure when to alert.\n\nEvery minute plugin will fetch the trends graph and alert based on comparing to threshold"
+        },
+        {
+            "key": "posthogTrendUrl",
+            "hint": "Link to /api/insight/trend for your graph. Get it by going to insights, opening network tab, constructing your graph and copying the URL here",
+            "name": "PostHog Trend API URL",
+            "type": "string",
+            "required": true
+        },
+        {
+            "key": "threshold",
+            "name": "Threshold",
+            "type": "string",
+            "default": "0",
+            "required": true
+        },
+        {
+            "key": "operator",
+            "name": "Comparison operation",
+            "type": "choice",
+            "default": "≤ Less than or equal",
+            "hint": "If ≤ plugin alerts if $last_2_datapoints ≤ $threshold, otherwise if $last_2_datapoints ≥ $threshold",
+            "choices": [
+                "≤ Less than or equal",
+                "≥ Greater than or equal"
+            ],
+            "required": true
+        },
+        {
+            "markdown": "Posthog configuration"
+        },
+        {
+            "key": "posthogApiKey",
+            "hint": "Your Personal API Key is not the same as the Project API key",
+            "name": "PostHog API Key",
+            "type": "string",
+            "secret": true,
+            "default": "",
+            "required": true
+        },
+        {
+            "markdown": "PagerDuty & incident configuration"
+        },
+        {
+            "key": "pagerdutyIntegrationKey",
+            "hint": "Integration Key for an integration on a service or on a global ruleset (Events API v2)",
+            "name": "PagerDuty integration key",
+            "type": "string",
+            "secret": true,
+            "default": "",
+            "required": true
+        },
+        {
+            "key": "pagerdutyIncidentSummary",
+            "name": "PagerDuty Incident Summary",
+            "type": "string",
+            "default": "Posthog query returned no results",
+            "required": true
+        },
+        {
+            "key": "posthogHost",
+            "hint": "Used in incident report as source",
+            "name": "PagerDuty incident source",
+            "type": "string",
+            "default": "myposthog",
+            "required": true
+        }
+    ]
+}
