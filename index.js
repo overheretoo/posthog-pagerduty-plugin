@@ -109,11 +109,11 @@ async function resolvePagerduty(incidentKey, meta) {
 }
 
 function insightsApiUrl(trendsUrl) {
-    const url = new URL(trendsUrl)
+    let url = new URL(trendsUrl)
 
     url.searchParams.set('refresh', 'true')
     if (url.pathname === '/insights') {
-        url.pathname = '/api/insight/trend'
+        url = new URL(`${url.origin}/api/insight/trend${url.search}${url.hash}`)
     }
 
     if (!url.pathname.startsWith('/api/insight/trend')) {
