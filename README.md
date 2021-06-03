@@ -2,7 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-This plugin alerts PagerDuty when a PostHog insights/trends graph goes below or above a threshold
+This plugin alerts PagerDuty when a PostHog insights/trends graph goes below or above a threshold.
+
+Example usecasess:
+- Alert when there is no $pageviews captured on my site the past hour
+- Alert when the rate of $billing_error events crosses a threshold
 
 ## Installation
 
@@ -14,12 +18,15 @@ This plugin alerts PagerDuty when a PostHog insights/trends graph goes below or 
 
 1. Get the trends URL.
   - Go to insights
-  - open network tab
-  - construct the graph you want to alert on
+  - Construct the graph you want to alert on
   - Copy url
-  - Add `&refresh=true` at end to force it to refresh
 2. Choose threshold and operator (less than or equal, greater than or equal)
 3. Enter PagerDuty service Integration key (for Events API v2)
+
+## Limitations
+
+- Only works on single-line trend graphs
+- Requires posthog 1.26.0 (or cloud)
 
 ## Questions?
 

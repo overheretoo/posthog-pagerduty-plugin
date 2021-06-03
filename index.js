@@ -1,4 +1,6 @@
-async function runEveryMinute(meta) {
+import { URL } from 'url'
+
+export async function runEveryMinute(meta) {
     const activeIncidentKey = await meta.cache.get("pagerduty_active_incident")
     const isInError = await isTrendErroring(meta)
 
@@ -33,7 +35,7 @@ function dataPointInError(value, threshold, operator) {
 }
 
 async function getTrend(meta) {
-    const response = await fetch(meta.config.posthogTrendUrl, {
+    const response = await fetch(insightsApiUrl(meta.config.posthogTrendUrl), {
         headers: {
             authorization: `Bearer ${meta.config.posthogApiKey}`
         }
@@ -104,4 +106,19 @@ async function resolvePagerduty(incidentKey, meta) {
     })
 
     await meta.cache.set("pagerduty_active_incident", null)
+}
+
+function insightsApiUrl(trendsUrl) {
+    const url = new URL(trendsUrl)
+
+    url.searchParams.set('refresh', 'true')
+    if (url.pathname === '/insights') {
+        url.pathname = '/api/insight/trend'
+    }
+
+    if (!url.pathname.startsWith('/api/insight/trend')) {
+        throw Error(`Not a valid trends URL: ${trendsUrl}`)
+    }
+
+    return url.href
 }

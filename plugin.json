@@ -9,8 +9,8 @@
         },
         {
             "key": "posthogTrendUrl",
-            "hint": "Link to /api/insight/trend for your graph. Get it by going to insights, opening network tab, constructing your graph and copying the URL here",
-            "name": "PostHog Trend API URL",
+            "hint": "Go to insights -> trends and construct your graph, copy the URL here",
+            "name": "PostHog Trend URL",
             "type": "string",
             "required": true
         },
