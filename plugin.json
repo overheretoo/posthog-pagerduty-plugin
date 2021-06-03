@@ -3,6 +3,7 @@
     "url": "https://github.com/PostHog/posthog-pagerduty-plugin",
     "description": "Create PagerDuty incidents when a posthog query crosses a threshold",
     "main": "index.js",
+    "posthogVersion": ">=1.26.0",
     "config": [
         {
             "markdown": "Configure when to alert.\n\nEvery minute plugin will fetch the trends graph and alert based on comparing to threshold"
