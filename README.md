@@ -8,12 +8,6 @@ Example usecasess:
 - Alert when there is no $pageviews captured on my site the past hour
 - Alert when the rate of $billing_error events crosses a threshold
 
-## Installation
-
-1. Open PostHog.
-1. Head to the Plugins page from the sidebar.
-1. Install from URL using this repository's URL.
-
 ## Configuring
 
 1. Get the trends URL.
