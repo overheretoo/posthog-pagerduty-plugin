@@ -109,11 +109,11 @@ async function resolvePagerduty(incidentKey, meta) {
 }
 
 function insightsApiUrl(trendsUrl) {
-    /*
-    bypass all of this for now
+    
+   // bypass all of this for now
 
     let url = new URL(trendsUrl)
-
+/*
     url.searchParams.set('refresh', 'true')
     if (url.pathname === '/insights') {
         url = new URL(`${url.origin}/api/insight/trend${url.search}${url.hash}`)
