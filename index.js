@@ -35,6 +35,7 @@ function dataPointInError(value, threshold, operator) {
 }
 
 async function getTrend(meta) {
+    console.log(meta)
     const response = await fetch(insightsApiUrl(meta.config.posthogTrendUrl), {
         headers: {
             authorization: `Bearer ${meta.config.posthogApiKey}`
