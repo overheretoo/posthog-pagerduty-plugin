@@ -36,19 +36,22 @@ function dataPointInError(value, threshold, operator) {
 
 async function getTrend(meta) {
     console.log(meta)
+    console.log("1")
     const response = await fetch(insightsApiUrl(meta.config.posthogTrendUrl), {
         headers: {
             authorization: `Bearer ${meta.config.posthogApiKey}`
         }
     })
+    console.log("2")
 
     if (!response.ok) {
         throw Error(`Error from PostHog API: status=${response.status} response=${await response.text()}`)
     }
-
+    console.log("3")
     const results = await response.json()
-
+    console.log("4")
     console.log('Got PostHog trends response', results)
+    console.log("5")
     return results.result[0]
 }
 
