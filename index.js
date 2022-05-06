@@ -109,6 +109,9 @@ async function resolvePagerduty(incidentKey, meta) {
 }
 
 function insightsApiUrl(trendsUrl) {
+    /*
+    bypass all of this for now
+
     let url = new URL(trendsUrl)
 
     url.searchParams.set('refresh', 'true')
@@ -118,7 +121,7 @@ function insightsApiUrl(trendsUrl) {
 
     if (!url.pathname.startsWith('/api/insight/trend')) {
         throw Error(`Not a valid trends URL: ${trendsUrl}`)
-    }
+    }*/
 
     return url.href
 }
