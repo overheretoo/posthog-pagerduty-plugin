@@ -52,6 +52,7 @@ async function getTrend(meta) {
     console.log("4")
     console.log('Got PostHog trends response', results)
     console.log("5")
+    console.log(results)
     return results.result[0]
 }
 
